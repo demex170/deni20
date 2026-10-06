@@ -1,0 +1,3303 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0b0a">
+<meta name="description" content="დემეტრე & ნინი — საქორწილო მოსაწვევი">
+<title>Demetre & Nini — Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+Georgian:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#0d0b0a;
+    --black2:#151210;
+    --ink:#201b17;
+
+    --ivory:#eee7dc;
+    --ivory2:#e3d8c9;
+    --paper:#f4eee5;
+
+    --gold:#b69a6b;
+    --gold2:#d1bb91;
+    --gold3:#8f754d;
+
+    --wine:#351e20;
+    --wine2:#4a292b;
+
+    --brown:#766b60;
+    --muted:#9a8f83;
+
+    --line:rgba(182,154,107,.35);
+    --white:#fff;
+
+    --serif:"Cormorant Garamond",serif;
+    --geo:"Noto Sans Georgian",sans-serif;
+    --modern:"Montserrat",sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--ink);
+    overflow-x:hidden;
+    font-family:var(--geo);
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   GLOBAL DECORATION
+========================================================= */
+
+.gold{
+    color:var(--gold);
+}
+
+.symbol{
+    font-family:var(--serif);
+    color:var(--gold);
+}
+
+.ornament{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+
+    color:var(--gold);
+
+    font-family:var(--serif);
+    font-size:21px;
+
+    letter-spacing:.1em;
+}
+
+.ornament::before,
+.ornament::after{
+    content:"";
+
+    width:55px;
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold)
+    );
+}
+
+.ornament::after{
+    background:linear-gradient(
+        90deg,
+        var(--gold),
+        transparent
+    );
+}
+
+.corner{
+    position:absolute;
+
+    width:75px;
+    height:75px;
+
+    pointer-events:none;
+}
+
+.corner::before,
+.corner::after{
+    content:"";
+
+    position:absolute;
+
+    background:var(--gold);
+    opacity:.65;
+}
+
+.corner::before{
+    width:55px;
+    height:1px;
+}
+
+.corner::after{
+    width:1px;
+    height:55px;
+}
+
+.corner.tl{
+    top:25px;
+    left:25px;
+}
+
+.corner.tl::before,
+.corner.tl::after{
+    top:0;
+    left:0;
+}
+
+.corner.tr{
+    top:25px;
+    right:25px;
+    transform:rotate(90deg);
+}
+
+.corner.br{
+    bottom:25px;
+    right:25px;
+    transform:rotate(180deg);
+}
+
+.corner.bl{
+    bottom:25px;
+    left:25px;
+    transform:rotate(270deg);
+}
+
+
+/* =========================================================
+   VIDEO INTRO
+========================================================= */
+
+.video-intro{
+    position:fixed;
+    inset:0;
+
+    z-index:99999;
+
+    background:#000;
+
+    overflow:hidden;
+
+    isolation:isolate;
+}
+
+.intro-video{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    opacity:0;
+
+    transition:
+        opacity .16s ease;
+}
+
+.intro-video.active{
+    opacity:1;
+}
+
+#video1{
+    z-index:1;
+}
+
+#video2{
+    z-index:2;
+}
+
+.intro-shade{
+    position:absolute;
+    inset:0;
+
+    z-index:4;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.08),
+            transparent 40%,
+            rgba(0,0,0,.28)
+        );
+}
+
+.touch-hint{
+    position:absolute;
+
+    left:50%;
+    bottom:42px;
+
+    transform:translateX(-50%);
+
+    z-index:10;
+
+    color:#fff;
+
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.3em;
+
+    white-space:nowrap;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+}
+
+.touch-hint::before,
+.touch-hint::after{
+    content:"";
+
+    width:30px;
+    height:1px;
+
+    background:rgba(255,255,255,.7);
+}
+
+.touch-hint.hide{
+    opacity:0;
+    transform:translateX(-50%) translateY(8px);
+}
+
+.intro-mark{
+    position:absolute;
+
+    top:34px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:10;
+
+    color:rgba(255,255,255,.8);
+
+    font-family:var(--serif);
+
+    font-size:18px;
+
+    letter-spacing:.35em;
+}
+
+
+/* =========================================================
+   WEBSITE
+========================================================= */
+
+#website{
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .9s ease,
+        visibility .9s ease;
+}
+
+#website.show{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav{
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:74px;
+
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 38px;
+
+    background:
+        rgba(13,11,10,.94);
+
+    border-bottom:1px solid rgba(182,154,107,.18);
+
+    color:#fff;
+}
+
+.nav-logo{
+    font-family:var(--serif);
+
+    font-size:27px;
+
+    letter-spacing:.16em;
+
+    color:var(--gold2);
+}
+
+.nav-links{
+    display:flex;
+    gap:26px;
+}
+
+.nav-links button{
+    background:none;
+    border:0;
+
+    color:#c5baab;
+
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+
+    transition:.3s ease;
+}
+
+.nav-links button:hover{
+    color:#fff;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    position:relative;
+
+    min-height:100vh;
+
+    padding:
+        145px 20px
+        95px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    color:#fff;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #302821 0%,
+            #171310 38%,
+            #0d0b0a 78%
+        );
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 0 45%,
+            rgba(0,0,0,.38) 100%
+        );
+
+    pointer-events:none;
+}
+
+.hero-inner{
+    position:relative;
+
+    width:100%;
+    max-width:1000px;
+
+    z-index:2;
+}
+
+.hero-eyebrow{
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.45em;
+
+    color:var(--gold2);
+
+    margin-bottom:28px;
+}
+
+.hero-symbol{
+    font-family:var(--serif);
+
+    font-size:25px;
+
+    color:var(--gold);
+
+    margin-bottom:17px;
+}
+
+.hero h1{
+    font-family:var(--serif);
+
+    font-size:clamp(74px,14vw,160px);
+
+    font-weight:300;
+
+    line-height:.72;
+
+    letter-spacing:-.05em;
+
+    color:#f4eee5;
+}
+
+.hero h1 span{
+    display:block;
+
+    font-size:.34em;
+
+    margin:25px 0;
+
+    color:var(--gold2);
+
+    letter-spacing:.18em;
+
+    line-height:1;
+}
+
+.hero-date{
+    margin-top:35px;
+
+    font-family:var(--modern);
+
+    font-size:10px;
+
+    letter-spacing:.45em;
+
+    color:#d8cdbd;
+}
+
+.hero-description{
+    max-width:520px;
+
+    margin:27px auto 0;
+
+    color:#aaa094;
+
+    font-size:11px;
+
+    line-height:2.15;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.hero-photo-wrap{
+    position:relative;
+
+    max-width:900px;
+
+    margin:60px auto 0;
+
+    padding:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold3),
+            #e1cfad,
+            var(--gold3)
+        );
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.45);
+}
+
+.hero-photo{
+    position:relative;
+
+    padding:7px;
+
+    background:var(--black);
+}
+
+.hero-photo img{
+    width:100%;
+    height:590px;
+
+    display:block;
+
+    object-fit:cover;
+
+    object-position:center;
+}
+
+.hero-photo::before{
+    content:"✦";
+
+    position:absolute;
+
+    left:50%;
+    top:-17px;
+
+    transform:translateX(-50%);
+
+    z-index:3;
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--black);
+
+    color:var(--gold2);
+
+    font-family:var(--serif);
+
+    font-size:16px;
+
+    border:1px solid var(--gold3);
+}
+
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story{
+    position:relative;
+
+    padding:145px 20px;
+
+    background:var(--ivory);
+
+    overflow:hidden;
+
+    text-align:center;
+}
+
+.story::before{
+    content:"❦";
+
+    position:absolute;
+
+    top:60px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-family:var(--serif);
+
+    font-size:60px;
+
+    color:rgba(143,117,77,.13);
+}
+
+.story-inner{
+    max-width:850px;
+
+    margin:auto;
+}
+
+.section-label{
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.34em;
+
+    color:var(--gold3);
+
+    margin-bottom:20px;
+}
+
+.section-title{
+    font-family:var(--serif);
+
+    font-size:72px;
+
+    line-height:.9;
+
+    font-weight:400;
+
+    color:var(--ink);
+}
+
+.story-names{
+    margin-top:65px;
+
+    font-family:var(--serif);
+
+    font-size:92px;
+
+    line-height:.8;
+
+    color:var(--ink);
+}
+
+.story-names span{
+    color:var(--gold);
+
+    font-size:42px;
+
+    margin:0 24px;
+}
+
+.story-text{
+    max-width:560px;
+
+    margin:38px auto 0;
+
+    color:var(--brown);
+
+    font-size:12px;
+
+    line-height:2.2;
+}
+
+.story-ornament{
+    margin-top:48px;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.date-section{
+    position:relative;
+
+    padding:145px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #321d1f,
+            #171110 65%,
+            #0c0a09
+        );
+
+    color:#fff;
+
+    overflow:hidden;
+}
+
+.date-section::after{
+    content:"18";
+
+    position:absolute;
+
+    right:-40px;
+    bottom:-100px;
+
+    font-family:var(--serif);
+
+    font-size:380px;
+
+    line-height:1;
+
+    color:rgba(255,255,255,.025);
+
+    pointer-events:none;
+}
+
+.date-inner{
+    position:relative;
+
+    max-width:920px;
+
+    margin:auto;
+
+    z-index:2;
+
+    text-align:center;
+}
+
+.date-section .section-label{
+    color:var(--gold2);
+}
+
+.date-section .section-title{
+    color:#f2eadf;
+}
+
+.date-frame{
+    position:relative;
+
+    max-width:780px;
+
+    margin:65px auto 0;
+
+    padding:70px 25px;
+
+    border:1px solid rgba(209,187,145,.45);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.01)
+        );
+}
+
+.date-frame::before,
+.date-frame::after{
+    content:"✦";
+
+    position:absolute;
+
+    color:var(--gold2);
+
+    font-family:var(--serif);
+
+    font-size:19px;
+}
+
+.date-frame::before{
+    top:17px;
+    left:22px;
+}
+
+.date-frame::after{
+    right:22px;
+    bottom:17px;
+}
+
+.date-small{
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.4em;
+
+    color:var(--gold2);
+}
+
+.date-number{
+    margin:24px 0 10px;
+
+    font-family:var(--serif);
+
+    font-size:145px;
+
+    font-weight:300;
+
+    line-height:.78;
+}
+
+.date-month{
+    font-family:var(--modern);
+
+    font-size:11px;
+
+    letter-spacing:.35em;
+
+    color:#ded4c8;
+}
+
+.date-divider{
+    width:55px;
+    height:1px;
+
+    background:var(--gold);
+
+    margin:32px auto;
+}
+
+.date-city{
+    color:#b4a99c;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   SCHEDULE
+========================================================= */
+
+.schedule{
+    position:relative;
+
+    padding:145px 20px;
+
+    background:var(--paper);
+
+    overflow:hidden;
+}
+
+.schedule-inner{
+    max-width:900px;
+
+    margin:auto;
+}
+
+.schedule-header{
+    text-align:center;
+
+    margin-bottom:70px;
+}
+
+.schedule-list{
+    position:relative;
+}
+
+.schedule-list::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+    left:50%;
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+.schedule-item{
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:1fr 90px 1fr;
+
+    align-items:center;
+
+    min-height:155px;
+}
+
+.schedule-side{
+    padding:25px;
+}
+
+.schedule-item:nth-child(odd) .schedule-side:first-child{
+    text-align:right;
+}
+
+.schedule-item:nth-child(even) .schedule-side:last-child{
+    text-align:left;
+}
+
+.schedule-time{
+    font-family:var(--modern);
+
+    font-size:10px;
+
+    letter-spacing:.18em;
+
+    color:var(--gold3);
+}
+
+.schedule-name{
+    margin-top:10px;
+
+    font-family:var(--serif);
+
+    font-size:39px;
+
+    line-height:.9;
+}
+
+.schedule-description{
+    margin-top:9px;
+
+    color:var(--brown);
+
+    font-size:10px;
+
+    line-height:1.8;
+}
+
+.schedule-symbol{
+    position:relative;
+
+    width:55px;
+    height:55px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--paper);
+
+    border:1px solid var(--gold);
+
+    transform:rotate(45deg);
+
+    z-index:3;
+}
+
+.schedule-symbol span{
+    transform:rotate(-45deg);
+
+    font-family:var(--serif);
+
+    font-size:20px;
+
+    color:var(--gold3);
+}
+
+
+/* =========================================================
+   LOCATIONS
+========================================================= */
+
+.locations{
+    position:relative;
+
+    padding:145px 20px;
+
+    background:var(--black);
+
+    color:#fff;
+}
+
+.locations-inner{
+    max-width:1050px;
+
+    margin:auto;
+}
+
+.locations-header{
+    text-align:center;
+
+    margin-bottom:70px;
+}
+
+.locations .section-label{
+    color:var(--gold2);
+}
+
+.locations .section-title{
+    color:#f3eadf;
+}
+
+.location-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:22px;
+}
+
+.location-card{
+    position:relative;
+
+    min-height:430px;
+
+    padding:65px 35px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #201b18,
+            #110f0d
+        );
+
+    border:1px solid rgba(182,154,107,.35);
+
+    overflow:hidden;
+}
+
+.location-card::before{
+    content:"";
+
+    position:absolute;
+
+    inset:12px;
+
+    border:1px solid rgba(182,154,107,.16);
+
+    pointer-events:none;
+}
+
+.location-card::after{
+    content:"✧";
+
+    position:absolute;
+
+    top:25px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-family:var(--serif);
+
+    color:var(--gold);
+
+    font-size:18px;
+}
+
+.location-symbol{
+    font-family:var(--serif);
+
+    font-size:40px;
+
+    color:var(--gold2);
+}
+
+.location-kicker{
+    margin-top:13px;
+
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.3em;
+
+    color:var(--gold);
+}
+
+.location-card h3{
+    margin:22px 0;
+
+    font-family:var(--serif);
+
+    font-size:50px;
+
+    font-weight:400;
+
+    color:#f0e8dd;
+}
+
+.location-card p{
+    color:#aaa095;
+
+    font-size:11px;
+
+    line-height:2;
+}
+
+.map-button{
+    margin-top:28px;
+
+    padding:13px 27px;
+
+    border:1px solid var(--gold3);
+
+    color:var(--gold2);
+
+    text-decoration:none;
+
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.2em;
+
+    transition:.3s ease;
+}
+
+.map-button:hover{
+    background:var(--gold);
+
+    color:var(--black);
+}
+
+
+/* =========================================================
+   DRESS CODE
+========================================================= */
+
+.dress{
+    position:relative;
+
+    padding:145px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #f8f1e8,
+            #ded2c2
+        );
+
+    text-align:center;
+}
+
+.dress-inner{
+    max-width:900px;
+
+    margin:auto;
+}
+
+.dress-card{
+    position:relative;
+
+    max-width:780px;
+
+    margin:65px auto 0;
+
+    padding:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9d835a,
+            #d8c39d,
+            #9d835a
+        );
+
+    box-shadow:
+        0 35px 80px rgba(31,24,17,.22);
+}
+
+.dress-card-inner{
+    padding:9px;
+
+    background:var(--black);
+}
+
+.dress-image{
+    position:relative;
+
+    overflow:hidden;
+}
+
+.dress-image img{
+    width:100%;
+
+    max-height:650px;
+
+    display:block;
+
+    object-fit:cover;
+}
+
+.dress-caption{
+    padding:35px 20px 38px;
+
+    color:#fff;
+}
+
+.dress-caption .symbol{
+    font-size:22px;
+}
+
+.dress-caption h3{
+    margin:10px 0;
+
+    font-family:var(--serif);
+
+    font-size:54px;
+
+    font-weight:300;
+}
+
+.dress-caption p{
+    color:#aaa095;
+
+    font-size:11px;
+
+    line-height:2;
+}
+
+
+/* =========================================================
+   RSVP
+========================================================= */
+
+.rsvp{
+    position:relative;
+
+    padding:150px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #271719,
+            #110f0e
+        );
+
+    color:#fff;
+
+    overflow:hidden;
+}
+
+.rsvp::before{
+    content:"❦";
+
+    position:absolute;
+
+    left:-30px;
+    top:50px;
+
+    font-family:var(--serif);
+
+    font-size:300px;
+
+    color:rgba(182,154,107,.045);
+
+    transform:rotate(-20deg);
+}
+
+.rsvp::after{
+    content:"❦";
+
+    position:absolute;
+
+    right:-30px;
+    bottom:10px;
+
+    font-family:var(--serif);
+
+    font-size:300px;
+
+    color:rgba(182,154,107,.045);
+
+    transform:rotate(160deg);
+}
+
+.rsvp-inner{
+    position:relative;
+
+    max-width:760px;
+
+    margin:auto;
+
+    z-index:2;
+}
+
+.rsvp-box{
+    position:relative;
+
+    padding:70px 50px;
+
+    background:#0f0d0c;
+
+    border:1px solid rgba(182,154,107,.42);
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.38);
+
+    text-align:center;
+}
+
+.rsvp-box::before{
+    content:"";
+
+    position:absolute;
+
+    inset:13px;
+
+    border:1px solid rgba(182,154,107,.18);
+
+    pointer-events:none;
+}
+
+.rsvp-title{
+    font-family:var(--serif);
+
+    font-size:86px;
+
+    font-weight:300;
+
+    color:#f1e8dd;
+}
+
+.rsvp-subtitle{
+    max-width:470px;
+
+    margin:16px auto 45px;
+
+    color:#a89c90;
+
+    font-size:11px;
+
+    line-height:2;
+}
+
+.form-group{
+    margin-bottom:22px;
+
+    text-align:left;
+
+    position:relative;
+    z-index:2;
+}
+
+.form-label{
+    display:block;
+
+    margin-bottom:8px;
+
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.2em;
+
+    color:#9d9184;
+
+    text-transform:uppercase;
+}
+
+.input,
+.select,
+.textarea{
+    width:100%;
+
+    padding:16px;
+
+    border:1px solid #403933;
+
+    outline:none;
+
+    border-radius:0;
+
+    background:#181512;
+
+    color:#fff;
+
+    font-size:12px;
+
+    transition:.25s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder{
+    color:#6e655d;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus{
+    border-color:var(--gold);
+}
+
+.textarea{
+    min-height:110px;
+
+    resize:vertical;
+}
+
+.attendance{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+}
+
+.attendance-option{
+    padding:17px;
+
+    border:1px solid #403933;
+
+    text-align:center;
+
+    color:#b7aca0;
+
+    font-size:11px;
+
+    transition:.3s ease;
+
+    cursor:pointer;
+}
+
+.attendance-option:hover{
+    border-color:var(--gold);
+}
+
+.attendance-option.active{
+    background:var(--gold);
+
+    border-color:var(--gold);
+
+    color:#16110e;
+}
+
+.submit{
+    width:100%;
+
+    padding:18px;
+
+    margin-top:7px;
+
+    border:1px solid var(--gold);
+
+    background:var(--gold);
+
+    color:#17110d;
+
+    font-family:var(--modern);
+
+    font-size:8px;
+
+    letter-spacing:.27em;
+
+    text-transform:uppercase;
+
+    transition:.3s ease;
+}
+
+.submit:hover{
+    background:var(--gold2);
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final{
+    position:relative;
+
+    min-height:82vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:100px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #352c25,
+            #0d0b0a 67%
+        );
+
+    color:#fff;
+
+    overflow:hidden;
+}
+
+.final::before{
+    content:"✦";
+
+    position:absolute;
+
+    top:40px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:var(--gold);
+
+    font-size:25px;
+}
+
+.final-content{
+    position:relative;
+
+    z-index:2;
+}
+
+.final-ornament{
+    font-family:var(--serif);
+
+    font-size:23px;
+
+    color:var(--gold2);
+
+    margin-bottom:25px;
+}
+
+.final-title{
+    font-family:var(--serif);
+
+    font-size:clamp(70px,13vw,145px);
+
+    line-height:.72;
+
+    font-weight:300;
+
+    letter-spacing:-.045em;
+}
+
+.final-title span{
+    color:var(--gold2);
+
+    font-size:.35em;
+
+    display:block;
+
+    margin:25px 0;
+}
+
+.final-line{
+    width:60px;
+    height:1px;
+
+    background:var(--gold);
+
+    margin:36px auto;
+}
+
+.final-date{
+    font-family:var(--modern);
+
+    font-size:9px;
+
+    letter-spacing:.4em;
+
+    color:#afa397;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    padding:48px 20px;
+
+    text-align:center;
+
+    background:#080706;
+
+    border-top:1px solid rgba(182,154,107,.2);
+}
+
+.footer img{
+    width:27px;
+    height:27px;
+
+    object-fit:contain;
+
+    opacity:.75;
+
+    margin-bottom:10px;
+}
+
+.footer p{
+    color:#6f665d;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   THANK YOU
+========================================================= */
+
+.thank-you{
+    position:fixed;
+
+    inset:0;
+
+    z-index:10000;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #352b24,
+            #0c0a09 70%
+        );
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:30px;
+
+    text-align:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.7s ease;
+}
+
+.thank-you.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.thank-you .symbol{
+    font-size:28px;
+}
+
+.thank-you h2{
+    margin-top:15px;
+
+    font-family:var(--serif);
+
+    font-size:80px;
+
+    font-weight:300;
+}
+
+.thank-you p{
+    margin-top:20px;
+
+    color:#aaa095;
+
+    font-size:12px;
+
+    line-height:2;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .nav{
+        height:62px;
+
+        padding:0 17px;
+    }
+
+    .nav-logo{
+        font-size:22px;
+    }
+
+    .nav-links{
+        gap:13px;
+    }
+
+    .nav-links button{
+        font-size:7px;
+    }
+
+
+    .hero{
+        padding:
+            110px 16px
+            70px;
+    }
+
+    .hero h1{
+        font-size:70px;
+    }
+
+    .hero-photo-wrap{
+        margin-top:45px;
+
+        padding:8px;
+    }
+
+    .hero-photo{
+        padding:5px;
+    }
+
+    .hero-photo img{
+        height:430px;
+    }
+
+
+    .corner{
+        width:50px;
+        height:50px;
+    }
+
+    .corner::before{
+        width:38px;
+    }
+
+    .corner::after{
+        height:38px;
+    }
+
+    .corner.tl{
+        top:17px;
+        left:17px;
+    }
+
+    .corner.tr{
+        top:17px;
+        right:17px;
+    }
+
+    .corner.br{
+        bottom:17px;
+        right:17px;
+    }
+
+    .corner.bl{
+        bottom:17px;
+        left:17px;
+    }
+
+
+    .story,
+    .date-section,
+    .schedule,
+    .locations,
+    .dress,
+    .rsvp{
+        padding:100px 17px;
+    }
+
+    .section-title{
+        font-size:52px;
+    }
+
+    .story-names{
+        font-size:59px;
+    }
+
+    .story-names span{
+        font-size:28px;
+
+        margin:0 7px;
+    }
+
+
+    .date-number{
+        font-size:100px;
+    }
+
+    .date-frame{
+        margin-top:45px;
+
+        padding:55px 20px;
+    }
+
+
+    .schedule-header{
+        margin-bottom:50px;
+    }
+
+    .schedule-list::before{
+        left:28px;
+    }
+
+    .schedule-item{
+        grid-template-columns:58px 1fr;
+
+        min-height:auto;
+
+        padding:28px 0;
+    }
+
+    .schedule-side{
+        grid-column:2;
+
+        padding:0 0 0 20px;
+
+        text-align:left!important;
+    }
+
+    .schedule-side:first-child{
+        display:none;
+    }
+
+    .schedule-symbol{
+        grid-column:1;
+        grid-row:1;
+
+        width:45px;
+        height:45px;
+    }
+
+    .schedule-symbol span{
+        font-size:17px;
+    }
+
+    .schedule-name{
+        font-size:31px;
+    }
+
+
+    .location-grid{
+        grid-template-columns:1fr;
+    }
+
+    .location-card{
+        min-height:350px;
+    }
+
+    .location-card h3{
+        font-size:43px;
+    }
+
+
+    .dress-card{
+        margin-top:45px;
+
+        padding:8px;
+    }
+
+    .dress-caption h3{
+        font-size:42px;
+    }
+
+
+    .rsvp-box{
+        padding:52px 20px;
+    }
+
+    .rsvp-title{
+        font-size:62px;
+    }
+
+    .attendance{
+        grid-template-columns:1fr;
+    }
+
+
+    .final{
+        min-height:70vh;
+    }
+
+    .final-title{
+        font-size:72px;
+    }
+
+
+    .touch-hint{
+        bottom:32px;
+    }
+
+
+    .thank-you h2{
+        font-size:60px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     CINEMATIC VIDEO INTRO
+===================================================== -->
+
+<div class="video-intro" id="videoIntro">
+
+    <div class="intro-mark">
+        D & N
+    </div>
+
+    <video
+        id="video1"
+        class="intro-video active"
+        playsinline
+        preload="auto"
+        muted>
+
+        <source src="video1.mp4" type="video/mp4">
+
+    </video>
+
+
+    <video
+        id="video2"
+        class="intro-video"
+        playsinline
+        preload="auto"
+        muted>
+
+        <source src="video2.mp4" type="video/mp4">
+
+    </video>
+
+
+    <div class="intro-shade"></div>
+
+
+    <div
+        class="touch-hint"
+        id="touchHint">
+
+        შეეხეთ ეკრანს
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     WEBSITE
+===================================================== -->
+
+<div id="website">
+
+
+<!-- =====================================================
+     NAV
+===================================================== -->
+
+<nav class="nav">
+
+    <div class="nav-logo">
+        D & N
+    </div>
+
+    <div class="nav-links">
+
+        <button onclick="scrollToSection('details')">
+            DETAILS
+        </button>
+
+        <button onclick="scrollToSection('rsvp')">
+            RSVP
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner br"></span>
+    <span class="corner bl"></span>
+
+    <div class="hero-inner">
+
+        <div class="hero-eyebrow">
+            THE WEDDING INVITATION
+        </div>
+
+        <div class="hero-symbol">
+            ❦
+        </div>
+
+        <h1>
+
+            დემეტრე
+
+            <span>&</span>
+
+            ნინი
+
+        </h1>
+
+        <div class="ornament">
+            ✦
+        </div>
+
+        <div class="hero-date">
+            18 · 07 · 2027
+        </div>
+
+        <p class="hero-description">
+
+            ორი ადამიანი.
+            ერთი სიყვარული.
+            ერთი დღე,
+            რომელსაც ერთად გავიზიარებთ.
+
+        </p>
+
+
+        <!-- ONLY ONE PHOTO -->
+
+        <div class="hero-photo-wrap">
+
+            <div class="hero-photo">
+
+                <img
+                    src="hero.jpg"
+                    alt="Demetre and Nini">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STORY
+===================================================== -->
+
+<section class="story">
+
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner br"></span>
+    <span class="corner bl"></span>
+
+    <div class="story-inner">
+
+        <div class="section-label">
+            01 — THE COUPLE
+        </div>
+
+        <h2 class="section-title">
+            ჩვენი ისტორია
+        </h2>
+
+        <div class="story-names">
+
+            დემეტრე
+
+            <span>&</span>
+
+            ნინი
+
+        </div>
+
+        <p class="story-text">
+
+            ზოგიერთი დღე უბრალოდ თარიღია.
+            ზოგიერთი კი მთელი ცხოვრების მოგონებად იქცევა.
+
+            <br><br>
+
+            სწორედ ასეთი დღე გვინდა გავიზიაროთ
+            თქვენთან ერთად.
+
+        </p>
+
+        <div class="story-ornament ornament">
+            ❦
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DATE
+===================================================== -->
+
+<section
+    class="date-section"
+    id="details">
+
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner br"></span>
+    <span class="corner bl"></span>
+
+    <div class="date-inner">
+
+        <div class="section-label">
+            02 — SAVE THE DATE
+        </div>
+
+        <h2 class="section-title">
+            დაიმახსოვრე ეს დღე
+        </h2>
+
+        <div class="date-frame">
+
+            <div class="date-small">
+                SAVE THE DATE
+            </div>
+
+            <div class="date-number">
+                18
+            </div>
+
+            <div class="date-month">
+                ივლისი · 2027
+            </div>
+
+            <div class="date-divider"></div>
+
+            <div class="date-city">
+                კვირა · თბილისი
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SCHEDULE
+===================================================== -->
+
+<section class="schedule">
+
+    <div class="schedule-inner">
+
+        <div class="schedule-header">
+
+            <div class="section-label">
+                03 — THE DAY
+            </div>
+
+            <h2 class="section-title">
+                დღის განრიგი
+            </h2>
+
+            <div class="ornament" style="margin-top:25px;">
+                ✦
+            </div>
+
+        </div>
+
+
+        <div class="schedule-list">
+
+
+            <div class="schedule-item">
+
+                <div class="schedule-side"></div>
+
+                <div class="schedule-symbol">
+                    <span>✦</span>
+                </div>
+
+                <div class="schedule-side">
+
+                    <div class="schedule-time">
+                        16:00
+                    </div>
+
+                    <div class="schedule-name">
+                        ჯვრისწერა
+                    </div>
+
+                    <div class="schedule-description">
+                        წმინდა სამების საკათედრო ტაძარი
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="schedule-item">
+
+                <div class="schedule-side">
+
+                    <div class="schedule-time">
+                        18:00
+                    </div>
+
+                    <div class="schedule-name">
+                        სტუმრების მიღება
+                    </div>
+
+                    <div class="schedule-description">
+                        სტუმრების შეკრება და დახვედრა.
+                    </div>
+
+                </div>
+
+                <div class="schedule-symbol">
+                    <span>◇</span>
+                </div>
+
+                <div class="schedule-side"></div>
+
+            </div>
+
+
+            <div class="schedule-item">
+
+                <div class="schedule-side"></div>
+
+                <div class="schedule-symbol">
+                    <span>❦</span>
+                </div>
+
+                <div class="schedule-side">
+
+                    <div class="schedule-time">
+                        19:00
+                    </div>
+
+                    <div class="schedule-name">
+                        საქორწილო ვახშამი
+                    </div>
+
+                    <div class="schedule-description">
+                        ჩვენი საღამოს მთავარი ნაწილი.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="schedule-item">
+
+                <div class="schedule-side">
+
+                    <div class="schedule-time">
+                        21:00
+                    </div>
+
+                    <div class="schedule-name">
+                        პირველი ცეკვა
+                    </div>
+
+                    <div class="schedule-description">
+                        მუსიკა, ცეკვა და ბედნიერი მომენტები.
+                    </div>
+
+                </div>
+
+                <div class="schedule-symbol">
+                    <span>✧</span>
+                </div>
+
+                <div class="schedule-side"></div>
+
+            </div>
+
+
+            <div class="schedule-item">
+
+                <div class="schedule-side"></div>
+
+                <div class="schedule-symbol">
+                    <span>♢</span>
+                </div>
+
+                <div class="schedule-side">
+
+                    <div class="schedule-time">
+                        23:30
+                    </div>
+
+                    <div class="schedule-name">
+                        საქორწილო ტორტი
+                    </div>
+
+                    <div class="schedule-description">
+                        ჩვენი საღამოს ტკბილი დასასრული.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOCATIONS
+===================================================== -->
+
+<section class="locations">
+
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner br"></span>
+    <span class="corner bl"></span>
+
+    <div class="locations-inner">
+
+        <div class="locations-header">
+
+            <div class="section-label">
+                04 — LOCATIONS
+            </div>
+
+            <h2 class="section-title">
+                ორი განსაკუთრებული ადგილი
+            </h2>
+
+        </div>
+
+
+        <div class="location-grid">
+
+
+            <div class="location-card">
+
+                <div class="location-symbol">
+                    ♢
+                </div>
+
+                <div class="location-kicker">
+                    CEREMONY
+                </div>
+
+                <h3>
+                    წმინდა სამება
+                </h3>
+
+                <p>
+
+                    თბილისი,
+                    სამების ქუჩა
+
+                    <br><br>
+
+                    16:00
+
+                </p>
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Holy+Trinity+Cathedral+of+Tbilisi"
+                    target="_blank"
+                    rel="noopener"
+                    class="map-button">
+
+                    OPEN MAP
+
+                </a>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-symbol">
+                    ✧
+                </div>
+
+                <div class="location-kicker">
+                    RECEPTION
+                </div>
+
+                <h3>
+                    Orbeliani Hall
+                </h3>
+
+                <p>
+
+                    თბილისი,
+                    ორბელიანის მოედანი
+
+                    <br><br>
+
+                    18:00
+
+                </p>
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Orbeliani+Square+Tbilisi"
+                    target="_blank"
+                    rel="noopener"
+                    class="map-button">
+
+                    OPEN MAP
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DRESS CODE
+===================================================== -->
+
+<section class="dress">
+
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner br"></span>
+    <span class="corner bl"></span>
+
+    <div class="dress-inner">
+
+        <div class="section-label">
+            05 — DRESS CODE
+        </div>
+
+        <h2 class="section-title">
+            Dress Code
+        </h2>
+
+        <div class="ornament" style="margin-top:25px;">
+            ❦
+        </div>
+
+
+        <div class="dress-card">
+
+            <div class="dress-card-inner">
+
+                <div class="dress-image">
+
+                    <img
+                        src="dress.png"
+                        alt="Dress Code">
+
+                </div>
+
+                <div class="dress-caption">
+
+                    <div class="symbol">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Elegant Formal
+                    </h3>
+
+                    <p>
+
+                        კლასიკური,
+                        დახვეწილი და სადღესასწაულო სტილი.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RSVP
+===================================================== -->
+
+<section
+    class="rsvp"
+    id="rsvp">
+
+    <div class="rsvp-inner">
+
+        <div class="rsvp-box">
+
+            <div class="section-label">
+                06 — RSVP
+            </div>
+
+            <div class="rsvp-title">
+                RSVP
+            </div>
+
+            <div class="ornament">
+                ✦
+            </div>
+
+            <p class="rsvp-subtitle">
+
+                გთხოვთ, დაგვიდასტუროთ
+                თქვენი მობრძანება.
+
+                <br>
+
+                თქვენი პასუხი ჩვენთვის მნიშვნელოვანია.
+
+            </p>
+
+
+            <form id="rsvpForm">
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        სახელი და გვარი
+                    </label>
+
+                    <input
+                        class="input"
+                        id="guestName"
+                        name="სახელი და გვარი"
+                        type="text"
+                        placeholder="თქვენი სახელი"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        თქვენი პასუხი
+                    </label>
+
+                    <div class="attendance">
+
+                        <div
+                            class="attendance-option"
+                            data-value="დიახ, ვიქნები"
+                            onclick="chooseAttendance(this)">
+
+                            დიახ, ვიქნები
+
+                        </div>
+
+                        <div
+                            class="attendance-option"
+                            data-value="სამწუხაროდ ვერ მოვალ"
+                            onclick="chooseAttendance(this)">
+
+                            ვერ მოვალ
+
+                        </div>
+
+                    </div>
+
+                    <input
+                        type="hidden"
+                        id="attendance"
+                        name="დადასტურება"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        სტუმრების რაოდენობა
+                    </label>
+
+                    <select
+                        class="select"
+                        id="guestCount"
+                        name="სტუმრების რაოდენობა">
+
+                        <option value="1">
+                            1 სტუმარი
+                        </option>
+
+                        <option value="2">
+                            2 სტუმარი
+                        </option>
+
+                        <option value="3">
+                            3 სტუმარი
+                        </option>
+
+                        <option value="4">
+                            4 სტუმარი
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        შეტყობინება
+                    </label>
+
+                    <textarea
+                        class="textarea"
+                        id="guestMessage"
+                        name="შეტყობინება"
+                        placeholder="დაგვიტოვეთ პატარა შეტყობინება..."></textarea>
+
+                </div>
+
+
+                <button
+                    class="submit"
+                    type="submit">
+
+                    Confirm Attendance
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<section class="final">
+
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner br"></span>
+    <span class="corner bl"></span>
+
+    <div class="final-content">
+
+        <div class="final-ornament">
+            ❦ &nbsp; ✦ &nbsp; ❦
+        </div>
+
+        <div class="final-title">
+
+            დემეტრე
+
+            <span>&</span>
+
+            ნინი
+
+        </div>
+
+        <div class="final-line"></div>
+
+        <div class="final-date">
+            18 · 07 · 2027
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <img
+        src="logo.png"
+        alt="DENI"
+        onerror="this.style.display='none'">
+
+    <p>
+        შექმნილია დენის მიერ
+    </p>
+
+</footer>
+
+
+</div>
+
+
+<!-- =====================================================
+     THANK YOU
+===================================================== -->
+
+<div
+    class="thank-you"
+    id="thankYou">
+
+    <div>
+
+        <div class="symbol">
+            ❦
+        </div>
+
+        <h2>
+            გმადლობთ.
+        </h2>
+
+        <p>
+
+            თქვენი პასუხი მიღებულია.
+
+            <br>
+
+            მოუთმენლად ველით თქვენთან შეხვედრას.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const CONFIG = {
+
+    formspreeEndpoint: "",
+
+    video1: "video1.mp4",
+
+    video2: "video2.mp4"
+
+};
+
+
+/* =========================================================
+   VIDEO SYSTEM
+========================================================= */
+
+const videoIntro =
+    document.getElementById("videoIntro");
+
+const video1 =
+    document.getElementById("video1");
+
+const video2 =
+    document.getElementById("video2");
+
+const touchHint =
+    document.getElementById("touchHint");
+
+const website =
+    document.getElementById("website");
+
+
+let videoStarted = false;
+let introFinished = false;
+
+
+/* =========================================================
+   START FIRST VIDEO
+========================================================= */
+
+async function startIntro(){
+
+    if(videoStarted){
+        return;
+    }
+
+    videoStarted = true;
+
+    touchHint.classList.add("hide");
+
+    /*
+        მომხმარებლის რეალური შეხების შემდეგ
+        ხმა შეიძლება ჩაირთოს.
+    */
+
+    video1.muted = false;
+
+    try{
+
+        await video1.play();
+
+    }catch(error){
+
+        /*
+            fallback muted
+        */
+
+        video1.muted = true;
+
+        try{
+
+            await video1.play();
+
+        }catch(secondError){
+
+            console.error(
+                "Video 1 could not start:",
+                secondError
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH / CLICK
+========================================================= */
+
+videoIntro.addEventListener(
+    "click",
+    startIntro
+);
+
+videoIntro.addEventListener(
+    "touchstart",
+    startIntro,
+    {
+        passive:true
+    }
+);
+
+
+/* =========================================================
+   VIDEO 1 ENDED
+========================================================= */
+
+video1.addEventListener(
+    "ended",
+    switchToVideo2
+);
+
+
+async function switchToVideo2(){
+
+    if(introFinished){
+        return;
+    }
+
+    /*
+        მეორე ვიდეო უკვე preload-შია.
+
+        ვცდილობთ ჯერ PLAY-ს,
+        შემდეგ კი ვაჩვენებთ.
+
+        ამით აღარ გვაქვს ხელოვნური
+        თეთრი 700ms ეკრანი.
+    */
+
+    video2.currentTime = 0;
+
+    /*
+        მომხმარებელმა უკვე შეასრულა gesture,
+        ამიტომ ვცდილობთ ხმით.
+    */
+
+    video2.muted = false;
+
+    try{
+
+        await video2.play();
+
+    }catch(error){
+
+        /*
+            თუ ბრაუზერმა ხმა დაბლოკა,
+            ვიდეო მაინც დაიწყოს muted.
+        */
+
+        video2.muted = true;
+
+        try{
+
+            await video2.play();
+
+        }catch(secondError){
+
+            console.error(
+                "Video 2 could not start:",
+                secondError
+            );
+
+            /*
+                თუ ჯერ მზად არ არის,
+                დაველოდოთ canplay-ს.
+            */
+
+            try{
+
+                await waitForCanPlay(video2);
+
+                await video2.play();
+
+            }catch(finalError){
+
+                console.error(
+                    "Video 2 loading error:",
+                    finalError
+                );
+
+            }
+
+        }
+
+    }
+
+    /*
+        მეორე ვიდეოს ჩვენება.
+
+        მხოლოდ 160ms crossfade —
+        აღარ არის თეთრი ეკრანი.
+    */
+
+    requestAnimationFrame(() => {
+
+        video2.classList.add("active");
+
+    });
+
+}
+
+
+/* =========================================================
+   VIDEO 2 ENDED
+========================================================= */
+
+video2.addEventListener(
+    "ended",
+    finishIntro
+);
+
+
+function finishIntro(){
+
+    if(introFinished){
+        return;
+    }
+
+    introFinished = true;
+
+    /*
+        მოკლე fade პირდაპირ მუქ ფონზე.
+        თეთრი ეკრანი საერთოდ აღარ არის.
+    */
+
+    videoIntro.style.transition =
+        "opacity .65s ease";
+
+    videoIntro.style.opacity = "0";
+
+    setTimeout(() => {
+
+        website.classList.add("show");
+
+        videoIntro.remove();
+
+    },650);
+
+}
+
+
+/* =========================================================
+   VIDEO READY
+========================================================= */
+
+function waitForCanPlay(video){
+
+    return new Promise((resolve,reject)=>{
+
+        if(
+            video.readyState >= 3
+        ){
+
+            resolve();
+
+            return;
+
+        }
+
+        const timeout =
+            setTimeout(
+                () => {
+
+                    reject(
+                        new Error(
+                            "Video loading timeout"
+                        )
+                    );
+
+                },
+                10000
+            );
+
+
+        video.addEventListener(
+            "canplay",
+            () => {
+
+                clearTimeout(timeout);
+
+                resolve();
+
+            },
+            {
+                once:true
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   PRELOAD VIDEO 2
+========================================================= */
+
+video2.load();
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function scrollToSection(id){
+
+    const target =
+        document.getElementById(id);
+
+    if(!target){
+        return;
+    }
+
+    target.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+}
+
+
+/* =========================================================
+   RSVP
+========================================================= */
+
+let selectedAttendance = "";
+
+
+function chooseAttendance(element){
+
+    document
+        .querySelectorAll(
+            ".attendance-option"
+        )
+        .forEach(option => {
+
+            option.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    element.classList.add("active");
+
+    selectedAttendance =
+        element.dataset.value;
+
+
+    document.getElementById(
+        "attendance"
+    ).value =
+        selectedAttendance;
+
+}
+
+
+/* =========================================================
+   RSVP FORM
+========================================================= */
+
+const rsvpForm =
+    document.getElementById(
+        "rsvpForm"
+    );
+
+
+rsvpForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        if(!selectedAttendance){
+
+            alert(
+                "გთხოვთ, აირჩიოთ თქვენი პასუხი."
+            );
+
+            return;
+
+        }
+
+
+        const name =
+            document.getElementById(
+                "guestName"
+            ).value.trim();
+
+
+        const guestCount =
+            document.getElementById(
+                "guestCount"
+            ).value;
+
+
+        const message =
+            document.getElementById(
+                "guestMessage"
+            ).value.trim();
+
+
+        const data = {
+
+            "სახელი და გვარი":
+                name,
+
+            "დადასტურება":
+                selectedAttendance,
+
+            "სტუმრების რაოდენობა":
+                guestCount,
+
+            "შეტყობინება":
+                message,
+
+            "მოსაწვევი":
+                "Demetre & Nini Wedding"
+
+        };
+
+
+        /*
+            Formspree
+        */
+
+        if(CONFIG.formspreeEndpoint){
+
+            try{
+
+                const response =
+                    await fetch(
+                        CONFIG.formspreeEndpoint,
+                        {
+                            method:"POST",
+
+                            headers:{
+                                "Content-Type":
+                                    "application/json",
+
+                                "Accept":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(data)
+                        }
+                    );
+
+
+                if(!response.ok){
+
+                    throw new Error(
+                        "Formspree error"
+                    );
+
+                }
+
+            }catch(error){
+
+                console.error(error);
+
+                alert(
+                    "პასუხის გაგზავნისას პრობლემა მოხდა. გთხოვთ, კიდევ ერთხელ სცადოთ."
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        document
+            .getElementById(
+                "thankYou"
+            )
+            .classList
+            .add("show");
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            document
+                .getElementById(
+                    "thankYou"
+                )
+                .classList
+                .remove("show");
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
